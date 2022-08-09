@@ -1,0 +1,17 @@
+query GetCard($getCardId: String!) {
+  getCard(id: $getCardId) {
+    status
+    card {
+      id
+      title
+      content
+      # image
+      user {
+        email
+      }
+      category
+      category
+      updatedAt
+    }
+  }
+}

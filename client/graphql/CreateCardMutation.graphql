@@ -1,0 +1,15 @@
+mutation CreateCard($input: CardInput!) {
+  createCard(input: $input) {
+    status
+    card {
+      id
+      title
+      content
+      category
+      user
+      # image
+      createdAt
+      updatedAt
+    }
+  }
+}

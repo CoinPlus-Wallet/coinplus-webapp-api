@@ -1,0 +1,14 @@
+mutation UpdateCard($input: UpdateCardInput!, $updateCardId: String!) {
+  updateCard(input: $input, id: $updateCardId) {
+    status
+    card {
+      id
+      title
+      content
+      category
+      # image
+      createdAt
+      updatedAt
+    }
+  }
+}

@@ -1,0 +1,22 @@
+query GetAllCards($input: CardFilter!) {
+  getCards(input: $input) {
+    status
+    results
+    cards {
+      id
+      _id
+      id
+      title
+      content
+      category
+      user {
+        email
+        name
+        # photo
+      }
+      # image
+      createdAt
+      updatedAt
+    }
+  }
+}
