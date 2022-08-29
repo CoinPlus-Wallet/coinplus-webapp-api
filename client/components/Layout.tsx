@@ -1,12 +1,8 @@
 import React, { useEffect } from 'react';
-import { IUser } from '../context/types';
-import {
-  useGetMeQuery,
-  useRefreshAccessTokenQuery,
-} from '../generated/graphql';
-import graphqlRequestClient, {
-  queryClient,
-} from '../requests/graphqlRequestClient';
+import { NextPage } from 'next';
+import { IUser } from '../lib/types';
+import { useGetMeQuery, useRefreshAccessTokenQuery } from '../generated/graphql';
+import graphqlRequestClient, { queryClient } from '../requests/graphqlRequestClient';
 import useStore from '../store';
 import Header from './Header';
 
@@ -16,11 +12,7 @@ type LayoutProps = {
   enableAuth?: boolean;
 };
 
-const PageLayout: React.FC<LayoutProps> = ({
-  children,
-  requireAuth,
-  enableAuth,
-}) => {
+const PageLayout: NextPage<LayoutProps> = ({ children, requireAuth, enableAuth }) => {
   const store = useStore();
   const query = useRefreshAccessTokenQuery(
     graphqlRequestClient,
@@ -59,8 +51,7 @@ const PageLayout: React.FC<LayoutProps> = ({
     }
   );
 
-  const loading =
-    isLoading || isFetching || query.isLoading || query.isFetching;
+  const loading = isLoading || isFetching || query.isLoading || query.isFetching;
 
   useEffect(() => {
     if (loading) {
